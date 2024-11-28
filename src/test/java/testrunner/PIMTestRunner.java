@@ -1,14 +1,13 @@
+package testrunner;
+
+import com.github.javafaker.Faker;
+import config.Setup;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
-import java.util.List;
+import pages.LoginPage;
+import pages.PIMPage;
 
 public class PIMTestRunner extends Setup {
     @BeforeTest
@@ -19,7 +18,13 @@ public class PIMTestRunner extends Setup {
     @Test(priority = 1)
     public void createUser() throws InterruptedException {
         PIMPage pimPage=new PIMPage(driver);
-        pimPage.createUser("Jamal","Kudu","jamalkudu4","P@ssword123");
+        Faker faker=new Faker();
+        String firstName=faker.name().firstName();
+        String lastName=faker.name().lastName();
+        String username=faker.name().username();
+        String password="P@ssword123";
+        pimPage.createUser(firstName,lastName,username,password);
+        //pimPage.createUser("Jamal","Kudu","jamalkudu4","P@ssword123");
         //List<WebElement> headerElement=driver.findElements(By.className("orangehrm-main-title"));
         String headerElementTitleActual= driver.findElement(By.xpath("//h6[normalize-space()='Personal Details']")).getText();
         String loginHeaderExpected="Personal Details";
