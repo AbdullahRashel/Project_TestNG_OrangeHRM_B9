@@ -19,7 +19,10 @@ public class LoginTestRunner extends Setup {
     @Test(priority = 2)
     public void doLoginWithvalidCreds(){
         loginPage=new LoginPage(driver);
-        loginPage.doLogin("Admin","admin123");
+        //loginPage.doLogin("Admin","admin123");
+        String adminUser=System.getProperty("username");
+        String adminPass=System.getProperty("password");
+        loginPage.doLogin(adminUser,adminPass);
         Assert.assertTrue(driver.getCurrentUrl().contains("dashboard"));
         boolean isImageExists= driver.findElement(By.className("oxd-userdropdown-img")).isDisplayed();
         Assert.assertTrue(isImageExists);
