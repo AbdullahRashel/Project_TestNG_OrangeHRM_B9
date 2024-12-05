@@ -31,7 +31,7 @@ test{
             print(project.property("username"))
             print(project.property("password"))
         }
-        suites "./src/test/resources/testng.xml"
+        suites "./src/test/resources/suite.xml"
     }
 
 }

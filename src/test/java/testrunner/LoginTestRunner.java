@@ -16,13 +16,13 @@ public class LoginTestRunner extends Setup {
         String textExpected="Invalid credentials";
         Assert.assertTrue(textActual.contains(textExpected));
     }
-    @Test(priority = 2)
+    @Test(priority = 2, groups = "smoke")
     public void doLoginWithvalidCreds(){
         loginPage=new LoginPage(driver);
-        //loginPage.doLogin("Admin","admin123");
-        String adminUser=System.getProperty("username");
-        String adminPass=System.getProperty("password");
-        loginPage.doLogin(adminUser,adminPass);
+        loginPage.doLogin("Admin","admin123");
+//        String adminUser=System.getProperty("username");
+//        String adminPass=System.getProperty("password");
+//        loginPage.doLogin(adminUser,adminPass);
         Assert.assertTrue(driver.getCurrentUrl().contains("dashboard"));
         boolean isImageExists= driver.findElement(By.className("oxd-userdropdown-img")).isDisplayed();
         Assert.assertTrue(isImageExists);
