@@ -1,13 +1,14 @@
+package testrunner;
+
+import config.Setup;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.LoginPage;
 
 public class LoginTestRunner extends Setup {
     LoginPage loginPage;
-    @Test(priority = 1)
+    @Test(priority = 1, description="Admin can not login without valid creds")
     public void doLoginWithWrongCreds(){
         loginPage=new LoginPage(driver);
         loginPage.doLogin("Admin","wrongpass");
@@ -15,10 +16,13 @@ public class LoginTestRunner extends Setup {
         String textExpected="Invalid credentials";
         Assert.assertTrue(textActual.contains(textExpected));
     }
-    @Test(priority = 2)
+    @Test(priority = 2, groups = "smoke", description="Admin can login with valid creds")
     public void doLoginWithvalidCreds(){
         loginPage=new LoginPage(driver);
         loginPage.doLogin("Admin","admin123");
+//        String adminUser=System.getProperty("username");
+//        String adminPass=System.getProperty("password");
+//        loginPage.doLogin(adminUser,adminPass);
         Assert.assertTrue(driver.getCurrentUrl().contains("dashboard"));
         boolean isImageExists= driver.findElement(By.className("oxd-userdropdown-img")).isDisplayed();
         Assert.assertTrue(isImageExists);
