@@ -8,7 +8,7 @@ import pages.LoginPage;
 
 public class LoginTestRunner extends Setup {
     LoginPage loginPage;
-    @Test(priority = 1)
+    @Test(priority = 1, description="Admin can not login without valid creds")
     public void doLoginWithWrongCreds(){
         loginPage=new LoginPage(driver);
         loginPage.doLogin("Admin","wrongpass");
@@ -16,7 +16,7 @@ public class LoginTestRunner extends Setup {
         String textExpected="Invalid credentials";
         Assert.assertTrue(textActual.contains(textExpected));
     }
-    @Test(priority = 2, groups = "smoke")
+    @Test(priority = 2, groups = "smoke", description="Admin can login with valid creds")
     public void doLoginWithvalidCreds(){
         loginPage=new LoginPage(driver);
         loginPage.doLogin("Admin","admin123");

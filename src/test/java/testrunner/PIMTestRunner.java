@@ -26,7 +26,7 @@ public class PIMTestRunner extends Setup {
         LoginPage loginPage=new LoginPage(driver);
         loginPage.doLogin("Admin","admin123");
     }
-    @Test(priority = 1)
+    @Test(priority = 1, groups = "smoke", description = "Admin can create new employee")
     public void createUser() throws InterruptedException, IOException, ParseException {
         PIMPage pimPage=new PIMPage(driver);
         Faker faker=new Faker();
