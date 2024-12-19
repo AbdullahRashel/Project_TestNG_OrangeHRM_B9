@@ -34,8 +34,13 @@ test{
             print(project.property("username"))
             print(project.property("password"))
         }
+        if(project.hasProperty("suiteName")){
+            systemProperties.put("suiteName",project.property("suiteName"))
+            print(project.property("suiteName"))
+        }
 //        suites "./src/test/resources/smoke/smokeSuite.xml"
-        suites "./src/test/resources/regression/regressionSuite.xml"
+//        suites "./src/test/resources/regression/regressionSuite.xml"
+        suites "./src/test/resources/"+systemProperties.get("suiteName")
     }
 
 }

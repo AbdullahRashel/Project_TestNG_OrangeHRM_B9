@@ -12,7 +12,12 @@
 
     </test>
 
-    <test name="Create new user">
+    <test name="Search new user">
+        <groups>
+            <run>
+                <include name="smoke"></include>
+            </run>
+        </groups>
         <classes>
             <class name="testrunner.PIMTestRunner"></class>
         </classes>
@@ -20,10 +25,16 @@
     </test>
 
     <test name="New user login">
+        <groups>
+            <run>
+                <include name="smoke"></include>
+            </run>
+        </groups>
         <classes>
             <class name="testrunner.UserTestRunner"></class>
         </classes>
 
     </test>
+
 
 </suite>
