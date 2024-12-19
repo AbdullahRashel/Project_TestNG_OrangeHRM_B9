@@ -9,9 +9,9 @@ Make sure you have the following prerequisites installed on your machine:
 - Web browser (Chrome, Firefox, etc.)
 
 ## How To Run This Project
-- Clone this project: [https://github.com/AbdullahRashel/Project_TestNG_OrangeHRM_B9.git]
+- Clone this project: ``` [https://github.com/AbdullahRashel/Project_TestNG_OrangeHRM_B9.git] ```
 - Run build.gradle.
-- In the terminal fllowing command: gradle clean test -PsuiteName="MasterRegressionSuite.xml"
+- In the terminal fllowing command: ``` gradle clean test -PsuiteName="MasterRegressionSuite.xml" ```
 
 ## Allure reports
 
